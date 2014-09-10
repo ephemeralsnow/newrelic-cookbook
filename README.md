@@ -103,6 +103,7 @@ Attributes
 
 ## php_agent.rb:
 * `node['newrelic']['php_agent']['install_silently']` - Determine whether to run the install in silent mode, defaults to false
+* `node['newrelic']['php_agent']['install_dir']` - The directory to install the newrelic
 * `node['newrelic']['php_agent']['startup_mode']` - The newrelic-daemon startup mode ("agent"/"external"), defaults to "agent"
 * `node['newrelic']['php_agent']['web_server']['service_name']` - The web server service name, defaults to "apache2"
 * `node['newrelic']['php_agent']['config_file']` - The New Relic php agent config file, depends on your php external configuration directory; eg. /etc/php5/conf.d/newrelic.ini

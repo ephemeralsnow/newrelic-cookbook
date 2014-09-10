@@ -28,11 +28,14 @@ end
 # run newrelic-install
 execute 'newrelic-install' do
   command 'newrelic-install install'
+  vars = {}
   if node['newrelic']['php_agent']['install_silently']
-    environment(
-      'NR_INSTALL_SILENT' => '1'
-    )
+    vars['NR_INSTALL_SILENT'] = '1'
   end
+  if node['newrelic']['php_agent']['install_dir']
+    vars['NR_INSTALL_PATH'] = node['newrelic']['php_agent']['install_dir']
+  end
+  environment(vars) unless vars.empty?
   action :nothing
   if node['newrelic']['php_agent']['web_server']['service_name']
     notifies :restart, "service[#{node['newrelic']['php_agent']['web_server']['service_name']}]", :delayed
